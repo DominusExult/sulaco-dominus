@@ -91,10 +91,26 @@ body[type*=server] .sender { display: none; }
 
 body[type*=channel] .event .message {
     color: #666;
+    font-size: 12px;
+    line-height: 1;
 }
 
-.event .message:before {
+body[type*=channel] .event .time, body[type*=channel] .event .sender {
+    line-height: 1;
+}
+
+div[type=kick] .message:before,
+div[type=part] .message:before,
+div[type=quit] .message:before {
+    content: '« ';
+}
+
+div[type=join] .message:before {
     content: '» ';
+}
+
+div[type=nick] .message:before {
+    content: '\2022 ';
 }
 
 body[type*=server] .event .message {
@@ -231,72 +247,10 @@ img {
     max-width: 95%;
 }
 
+body .inline_nickname {
+    font-weight: 600;
+}
+
 /* Nickname Colors */
 body .text .sender[type*=myself] { color: #ff8c00; }
 
-body .sender[type*=normal][colornumber='0']  { color: #7cfc00; }
-body .sender[type*=normal][colornumber='1']  { color: #c2ff40; }
-body .sender[type*=normal][colornumber='2']  { color: #87ceeb; }
-body .sender[type*=normal][colornumber='3']  { color: #e1c4ff; }
-body .sender[type*=normal][colornumber='4']  { color: #6495ed; }
-body .sender[type*=normal][colornumber='5']  { color: #ff69b4; }
-body .sender[type*=normal][colornumber='6']  { color: #ffb6c1; }
-body .sender[type*=normal][colornumber='7']  { color: #48d1cc; }
-body .sender[type*=normal][colornumber='8']  { color: #ee82ee; }
-body .sender[type*=normal][colornumber='9']  { color: #f66e72; }
-body .sender[type*=normal][colornumber='10'] { color: #69ff89; }
-body .sender[type*=normal][colornumber='11'] { color: #ffe170; }
-body .sender[type*=normal][colornumber='12'] { color: #95d38f; }
-body .sender[type*=normal][colornumber='13'] { color: #7eb6be; }
-body .sender[type*=normal][colornumber='14'] { color: #f3d8e2; }
-body .sender[type*=normal][colornumber='15'] { color: #f66e72; }
-body .sender[type*=normal][colornumber='16'] { color: #faa4a6; }
-body .sender[type*=normal][colornumber='17'] { color: #ffd4a8; }
-body .sender[type*=normal][colornumber='18'] { color: #ffeba5; }
-body .sender[type*=normal][colornumber='19'] { color: #bae2b6; }
-body .sender[type*=normal][colornumber='20'] { color: #aad0d4; }
-body .sender[type*=normal][colornumber='21'] { color: #a8d0ef; }
-body .sender[type*=normal][colornumber='22'] { color: #98a3ff; }
-body .sender[type*=normal][colornumber='23'] { color: #c09bc3; }
-body .sender[type*=normal][colornumber='24'] { color: #c38074; }
-body .sender[type*=normal][colornumber='25'] { color: #a6e1a4; }
-body .sender[type*=normal][colornumber='26'] { color: #7f99e1; }
-body .sender[type*=normal][colornumber='27'] { color: #5ba2e1; }
-body .sender[type*=normal][colornumber='28'] { color: #e1de7d; }
-body .sender[type*=normal][colornumber='29'] { color: #e199a8; }
-body .sender[type*=normal][colornumber='30'] { color: #b5a0e1; }
-
-/* mIRC Color Codes */
-.effect[color-number='0']  { color: #ffffff; }
-.effect[color-number='1']  { color: #000000; }
-.effect[color-number='2']  { color: #000088; }
-.effect[color-number='3']  { color: #008800; }
-.effect[color-number='4']  { color: #ff0000; }
-.effect[color-number='5']  { color: #880000; }
-.effect[color-number='6']  { color: #880088; }
-.effect[color-number='7']  { color: #ff8800; }
-.effect[color-number='8']  { color: #ffff00; }
-.effect[color-number='9']  { color: #00ff00; }
-.effect[color-number='10'] { color: #008888; }
-.effect[color-number='11'] { color: #00ffff; }
-.effect[color-number='12'] { color: #0000ff; }
-.effect[color-number='13'] { color: #ff00ff; }
-.effect[color-number='14'] { color: #888888; }
-.effect[color-number='15'] { color: #cccccc; }
-
-.effect[bgcolor-number='0']  { background-color: #ffffff; }
-.effect[bgcolor-number='1']  { background-color: #000000; }
-.effect[bgcolor-number='2']  { background-color: #000088; }
-.effect[bgcolor-number='3']  { background-color: #008800; }
-.effect[bgcolor-number='4']  { background-color: #ff0000; }
-.effect[bgcolor-number='5']  { background-color: #880000; }
-.effect[bgcolor-number='6']  { background-color: #880088; }
-.effect[bgcolor-number='7']  { background-color: #ff8800; }
-.effect[bgcolor-number='8']  { background-color: #ffff00; }
-.effect[bgcolor-number='9']  { background-color: #00ff00; }
-.effect[bgcolor-number='10'] { background-color: #008888; }
-.effect[bgcolor-number='11'] { background-color: #00ffff; }
-.effect[bgcolor-number='12'] { background-color: #0000ff; }
-.effect[bgcolor-number='13'] { background-color: #ff00ff; }
-.effect[bgcolor-number='14'] { background-color: #888888; }
-.effect[bgcolor-number='15'] { background-color: #cccccc; }
