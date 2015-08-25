@@ -6,7 +6,7 @@ var Sulaco;
 
 Sulaco = {
     lineCache: {},
-    playbackMode: false,
+    playbackMode: true,
 
     coalesceMessages: function (lineNum) {
         var lineEl     = Sulaco.getLineEl(lineNum),
@@ -115,4 +115,19 @@ Textual.viewFinishedLoading = function () {
 
 Textual.viewFinishedReload = function () {
     Textual.viewFinishedLoading();
+};
+
+/* When you join a channel, delete all the old disconnected messages */
+Textual.handleEvent = function (event) {
+  'use strict';
+  var i, messages;
+
+  if (event === 'channelJoined') {
+    messages = document.querySelectorAll('div[command="-100"]');
+    for (i = 0; i < messages.length; i++) {
+      if (app.channelIsJoined() && (messages[i].getElementsByClassName('message')[0].textContent.search('Disconnect') !== -1)) {
+        messages[i].parentNode.removeChild(messages[i]);
+      }
+    }
+  }
 };
