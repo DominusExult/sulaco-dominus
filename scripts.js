@@ -57,7 +57,7 @@ Sulaco = {
 
     getSenderNick: function (line) {
         var senderEl = Sulaco.getSenderEl(line);
-        return senderEl ? senderEl.getAttribute('nick') : null;
+        return senderEl ? senderEl.getAttribute('nickname') : null;
     },
 
     handleBufferPlayback: function (lineNum) {

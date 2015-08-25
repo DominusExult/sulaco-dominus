@@ -2,10 +2,8 @@
 
 /* Basic Body Structure */
 body {
-    background: #222;
-    color: #cfcfcf;
-    font-family: 'Myriad Pro';
-    font-size: 16px;
+    background: #303030;
+    color: #efefef;
     line-height: 1.4;
     margin: 0;
     overflow-x: hidden;
@@ -47,12 +45,8 @@ body[type*=server] #body_home {
     width: 100%;
 }
 
-.sender,
-.time {
-    background: #333;
-}
-
 .sender {
+    background: #3c3c3c;
     font-weight: 600;
     overflow: hidden;
     text-align: right;
@@ -64,6 +58,7 @@ body[type*=server] #body_home {
 body[type*=server] .sender { display: none; }
 
 .time {
+    text-align: right;
     color: #888;
     font-size: 0.8em;
     line-height: 1.8;
@@ -75,18 +70,18 @@ body[type*=server] .sender { display: none; }
     -webkit-flex-flow: row;
 }
 
-.line[nickname-type*=myself] .message {
-    background: #2e2e2e;
+.line[nickname-type*=myself] .message,
+.line[nickname-type*=myself] .time {
+    background: #363636;
 }
 
 .line[type*=action] .message,
 .line[type*=action] .sender {
-    background: none;
     font-style: italic;
 }
 
-.line[type*=action] .sender {
-    padding-right: 2px;
+body[type*=channel] .event {
+    background: #262626;
 }
 
 body[type*=channel] .event .message {
@@ -114,14 +109,13 @@ div[type=nick] .message:before {
 }
 
 body[type*=server] .event .message {
-    color: #999;
+    color: #5f5f5f;
     font-size: inherit;
-    padding-left: 1em;
     padding-right: 2em;
 }
 
 body[type*=server] .event .message:before {
-    content: '';
+    content: ' ';
 }
 
 .event .sender {
@@ -136,9 +130,10 @@ body[type*=server] .line:hover {
 .text:hover .message,
 .text:hover .sender,
 .text:hover .time,
+body[type*=server] .line:hover .sender[type*=myself],
 body[type*=server] .line:hover .message,
 body[type*=server] .line:hover .time {
-    background-color: #444;
+    background-color: #737373 !important;
     color: #fff;
 }
 
@@ -164,10 +159,7 @@ body[type*=server] .line:hover .time {
 
 .text[highlight*=true] .message,
 .text[highlight*=true] .sender,
-.text[highlight*=true] .time {
-    background-color: #1b3458;
-}
-
+.text[highlight*=true] .time,
 .text[highlight*=true]:hover .message,
 .text[highlight*=true]:hover .sender,
 .text[highlight*=true]:hover .time {
@@ -183,9 +175,7 @@ body[type*=server] .line:hover .time {
 }
 
 #mark {
-    border-bottom: 1px dotted #9f9f9f;
-    margin: 1px 0;
-    -webkit-transition: 0.2s linear;
+    border-bottom: 1px solid #eaeaea;
 }
 
 /* Loading Screen */
