@@ -263,52 +263,51 @@ body div#loading_screen {
 }
 
 /* Images */
-/*body a img {
-    border: 0;
+body a img {
+  border: 0;
 }
 
-body a img:hover {
-    outline: 2px solid #284e84;
-}
-
+body video,
 body img {
-    display: block;
-    margin: 15px 15px 12px 0;
-    max-height: 40%;
-    max-width: 95%;
-}*/
-
-.inlineImageCell {
-	overflow: auto;
 	display: block;
-	margin-top: 15px;
-	margin-bottom: 12px;
+}
+.inlineImageCell {
+	position: relative;
+	display: table;
+	overflow: auto;
+	width: auto;
+	height: auto;
+}
+
+.inlineImageCell > a {
+	display: inline-block;
+	border: none;
 }
 
 .inlineImageCell .image {
 	display: inline-block;
 	float: left;
-	margin-right: 12px;
-	margin-left: 10px;
-	min-width: 40px;
-	max-width: 90%;
+	margin: 15px 15px 12px 10px;
+	min-width: 100px;
 }
 
 .inlineImageCell .closeButton {
+	background: #000000;
 	cursor: pointer;
-	border-radius: 5px;
-	border: 2px solid #a1a1a1;
-	color: #a1a1a1;
-	display: inline-block;
-	line-height: 14px;
-	font-size: 15px;
+	border-radius: 50%;
+	position: absolute;
+	box-sizing: border-box;
+	font-size: 20px !important;
 	font-family: "Helvetica Neue" !important;
-	text-indent: 7px;
-	width: 16px;
-	height: 16px;
-	float: left;
-	padding-right: 7px;
-	padding-left: 0px;
+	font-weight: 100 !important;
+	text-align: center;
+	line-height: 17px;
+	color: #f2f2f2;
+	border: 2px solid #f2f2f2;
+	top: 5px;
+	right: 5px;
+	width: 25px;
+	height: 25px;
 }
 
 body .inline_nickname {
