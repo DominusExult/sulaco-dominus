@@ -310,12 +310,14 @@ body img {
 	height: 25px;
 }
 
+ /* Nickname Colors */
+ /* all in colors.css */
+
 body .inline_nickname {
     font-weight: 600;
 }
 
 /* myself Colors */
-
 
 body .text .sender[type*=myself]{
 	color:#fff;
