@@ -200,12 +200,6 @@ a:hover {
     opacity: 0.8 !important;
 }
 
-.historic[type*=part],
-.historic[type*=quit],
-.historic[type*=join] {
-	display: none;
-}
-
 /* Loading Screen */
 body div#loading_screen {
     position:absolute;
