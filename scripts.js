@@ -130,6 +130,10 @@ Sulaco = {
       if (line.getAttribute('type') === 'join' &&
           /query/i.test(line.textContent))
         line.classList.add('join-query');
+
+      if (line.getAttribute('type') === 'notice' &&
+          /gettinghelp/i.test(line.textContent))
+        line.classList.add('freenode-troll');
 	
     }
 };

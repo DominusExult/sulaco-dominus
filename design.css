@@ -164,7 +164,8 @@ body[type*=server] .line:hover .time {
 .disconnect,
 .dominus-join,
 .dominus-quit,
-.dominus-nick/*,
+.dominus-nick,
+.freenode-troll/*,
 .quit-query,
 .join-query */{
   display: none;
