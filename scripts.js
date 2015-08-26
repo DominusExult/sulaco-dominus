@@ -93,6 +93,44 @@ Sulaco = {
                 msgEl.innerHTML = msgEl.innerHTML.replace(/^\s*\[\d\d:\d\d:\d\d\]/, '');
             }
         }
+    },
+
+    setDescriptiveClassNames: function (lineNum) {
+      var line = Sulaco.getLineEl(lineNum);
+
+      if (line.getAttribute('type') === 'debug' &&
+          /Disconnect/.test(line.textContent))
+        line.classList.add('disconnect');
+
+      if (line.getAttribute('type') === 'mode')
+        line.classList.add('mode');
+
+      if (line.getAttribute('type') === 'topic')
+        line.classList.add('topic');
+
+      if (line.getAttribute('type') === 'website')
+        line.classList.add('website');
+
+      if (line.getAttribute('type') === 'join' &&
+          /Dominus/i.test(line.textContent))
+        line.classList.add('dominus-join');
+
+      if (line.getAttribute('type') === 'quit' &&
+          /Dominus/i.test(line.textContent))
+        line.classList.add('dominus-quit');
+
+      if (line.getAttribute('type') === 'nick' &&
+          /Dominus/i.test(line.textContent))
+        line.classList.add('dominus-nick');
+
+      if (line.getAttribute('type') === 'quit' &&
+          /query/i.test(line.textContent))
+        line.classList.add('quit-query');
+
+      if (line.getAttribute('type') === 'join' &&
+          /query/i.test(line.textContent))
+        line.classList.add('join-query');
+	
     }
 };
 
@@ -103,6 +141,7 @@ Sulaco = {
 Textual.newMessagePostedToView = function (lineNum) {
     Sulaco.handleBufferPlayback(lineNum);
     Sulaco.coalesceMessages(lineNum);
+    Sulaco.setDescriptiveClassNames(lineNum);
 };
 
 Textual.viewFinishedLoading = function () {
