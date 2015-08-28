@@ -134,7 +134,10 @@ Sulaco = {
       if (line.getAttribute('type') === 'notice' &&
           /gettinghelp/i.test(line.textContent))
         line.classList.add('freenode-troll');
-	
+
+      if (line.getAttribute('type') === 'notice' &&
+          /Welcome to/i.test(line.textContent))
+        line.classList.add('chanserv-welcome');
     }
 };
 
