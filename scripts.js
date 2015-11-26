@@ -119,6 +119,10 @@ Sulaco = {
           /Dominus/i.test(line.textContent))
         line.classList.add('dominus-quit');
 
+      if (line.getAttribute('type') === 'part' &&
+          /Dominus/i.test(line.textContent))
+        line.classList.add('dominus-part');
+
       if (line.getAttribute('type') === 'nick' &&
           /Dominus/i.test(line.textContent))
         line.classList.add('dominus-nick');
@@ -130,14 +134,6 @@ Sulaco = {
       if (line.getAttribute('type') === 'join' &&
           /query/i.test(line.textContent))
         line.classList.add('join-query');
-
-      if (line.getAttribute('type') === 'notice' &&
-          /gettinghelp/i.test(line.textContent))
-        line.classList.add('freenode-troll');
-
-      if (line.getAttribute('type') === 'notice' &&
-          /Welcome to/i.test(line.textContent))
-        line.classList.add('chanserv-welcome');
     }
 };
 

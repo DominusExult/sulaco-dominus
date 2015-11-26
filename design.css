@@ -164,9 +164,8 @@ body[type*=server] .line:hover .time {
 .disconnect,
 .dominus-join,
 .dominus-quit,
-.dominus-nick,
-.chanserv-welcome,
-.freenode-troll/*,
+.dominus-part,
+.dominus-nick/*,
 .quit-query,
 .join-query */{
   display: none;
@@ -187,7 +186,8 @@ a:hover {
 
 /* Remember Line */
 #mark {
-    border-bottom: 1px dashed;
+	position: relative;
+	border-bottom: 1px dashed;
 	z-index: 295;
 	margin-top: -1px;
 	border-color: #c33;
