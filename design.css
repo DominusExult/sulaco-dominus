@@ -199,6 +199,22 @@ a:hover {
 .historic 
 {
     opacity: 0.8 !important;
+}
+
+/* ONLY works on Textual 6 launch thus commenting it for now*/
+/*#historic_messages {
+	transition: opacity 0.8s ease-in;
+	opacity: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#historic_messages.loaded {
+	opacity: 0.8 !important;
+	height: auto;
+}*/
+
 /* Scrolling */
 
 body[customscroller="true"]::-webkit-scrollbar {
