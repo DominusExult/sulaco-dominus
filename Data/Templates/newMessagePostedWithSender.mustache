@@ -1,8 +1,9 @@
 <div type="{{lineType}}"
-		highlight="{{highlightAttributeRepresentation}}"
-		class="line {{lineClassAttributeRepresentation}}"
-		id="line{{lineNumber}}"
-		nickname-type="{{nicknameType}}">
+	command="{{command}}"
+	highlight="{{highlightAttributeRepresentation}}"
+	class="line {{lineClassAttributeRepresentation}}"
+	id="line{{lineNumber}}"
+	nickname-type="{{nicknameType}}">
 
 {{#isEncrypted}}
 	{{{encryptedMessageLockTemplate}}}
@@ -35,5 +36,5 @@
 		{{/inlineMediaAvailable}}
 	</span>
 
-	<span class="time">{{formattedTimestamp}}</span>
+	<span class="time" title={{localizedTimestamp}}>{{formattedTimestamp}}</span>
 </div>

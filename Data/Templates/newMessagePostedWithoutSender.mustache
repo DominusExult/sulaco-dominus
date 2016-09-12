@@ -1,7 +1,21 @@
-<div type="{{lineType}}" class="line {{lineClassAttributeRepresentation}}" id="line{{lineNumber}}">
-    <span class="sender"></span>
-	<span class="message" type="{{lineType}}">
-		{{{formattedMessage}}}
-	</span>
-    <span class="time">{{formattedTimestamp}}</span>
+{{! The 'line types' folder needs to be copied to a custom style to modify this file. }}
+
+<div 	type="{{lineType}}" 
+
+{{^isRemoteMessage}}
+		mtype="{{nicknameType}}"
+{{/isRemoteMessage}}
+
+		command="{{command}}"
+		class="line {{lineClassAttributeRepresentation}}" 
+		id="line{{lineNumber}}"
+		timestamp="{{timestamp}}">
+	
+	<p>
+		<span class="sender"></span>
+		<span class="time" title="{{localizedTimestamp}}">{{formattedTimestamp}} </span>
+		<span class="message" type="{{lineType}}">
+			{{{formattedMessage}}}
+		</span>
+	</p>
 </div>
