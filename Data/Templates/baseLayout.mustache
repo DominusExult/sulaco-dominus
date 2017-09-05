@@ -6,7 +6,11 @@
     {{#isPrivateMessageView}}
         channelname="{{channelName}}"
     {{/isPrivateMessageView}}
-	
+
+	{{#isUtilityView}}
+		channelname="{{channelName}}"
+	{{/isUtilityView}}
+
 	{{! The operating system version declaration allows CSS selectors to target specific versions. }}
 	systemversion="{{operatingSystemVersion}}"
 
@@ -16,6 +20,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset={{userConfiguredTextEncoding}}">
 
     <link rel="stylesheet" type="text/css" href="{{activeStyleAbsolutePath}}/design.css?{{cacheToken}}" charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="{{applicationTemplatesPath}}/baseLayout.css?{{cacheToken}}" charset="UTF-8">
+
     <link rel="stylesheet" href="{{activeStyleAbsolutePath}}/colors.css?{{cacheToken}}" charset="UTF-8">
 
 	<script src="{{applicationResourcePath}}/JavaScript/API/core.js" type="text/javascript" charset="UTF-8"></script>
@@ -32,6 +39,7 @@
         }
 
         {{#nicknameIndentationAvailable}}
+			
             body .time {
                 width: {{predefinedTimestampWidth}}px;
             }
@@ -53,13 +61,17 @@
     {{#isPrivateMessageView}}
         channelname="{{channelName}}"
     {{/isPrivateMessageView}}
-	
+
+	{{#isUtilityView}}
+		channelname="{{channelName}}"
+	{{/isUtilityView}}
+
 	{{#usesCustomScrollers}}
 	customscroller="true"
 	{{/usesCustomScrollers}}
 	
 	dir="{{textDirectionToken}}">
-		{{! The elements "body_home," "historic_messages," "loading_screen," 
+		{{! The elements "body_home," "message_buffer", "loading_screen," 
 		"topic_bar," and "mark" must always remain the same as the ID value 
 		of these elements are used internally by Textual. }}
 
@@ -70,7 +82,8 @@
 		{{/isChannelView}}
 
 		<div id="body_home">
-			<div id="historic_messages"></div>
+			<div id="message_buffer"></div>
 		</div>
+		<a name="most_recent_anchor" id="most_recent_anchor" href="#most_recent_anchor"></a>
 </body>
 </html>

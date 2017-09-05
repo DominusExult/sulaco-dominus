@@ -8,7 +8,7 @@ Sulaco = {
     lineCache: {},
     playbackMode: true,
 
-    coalesceMessages: function (lineNum) {
+    coalesceMessages: function (lineNum, fromBuffer) {
         var lineEl     = Sulaco.getLineEl(lineNum),
             prevLineEl = lineEl && Sulaco.getLineEl(lineEl.previousElementSibling),
             prevSender = Sulaco.getSenderNick(prevLineEl),
@@ -27,7 +27,7 @@ Sulaco = {
         }
     },
 
-    getLineEl: function (lineNum) {
+    getLineEl: function (lineNum, fromBuffer) {
         if (typeof lineNum === 'string') {
             return doc.getElementById('line' + lineNum);
         }
@@ -60,7 +60,7 @@ Sulaco = {
         return senderEl ? senderEl.getAttribute('nickname') : null;
     },
 
-    handleBufferPlayback: function (lineNum) {
+    handleBufferPlayback: function (lineNum, fromBuffer) {
         var line = Sulaco.getLineEl(lineNum),
             message;
 
@@ -95,11 +95,11 @@ Sulaco = {
         }
     },
 
-    setDescriptiveClassNames: function (lineNum) {
+    setDescriptiveClassNames: function (lineNum, fromBuffer) {
       var line = Sulaco.getLineEl(lineNum);
 
       if (line.getAttribute('type') === 'debug' &&
-          /Disconnect/.test(line.textContent))
+          /Disconnect/i.test(line.textContent))
         line.classList.add('disconnect');
 
       if (line.getAttribute('type') === 'mode')
@@ -134,20 +134,40 @@ Sulaco = {
       if (line.getAttribute('type') === 'join' &&
           /query/i.test(line.textContent))
         line.classList.add('join-query');
-    }
+	},
+
+	fixTimeStampFormatting: function(lineNum) {
+		var line = Sulaco.getLineEl(lineNum);
+		var time = line.querySelector('.time');
+
+		if (!time)
+			return;
+
+		var matches = time.textContent.match(/\[([^\]]+)\]/);
+		if (matches && matches[1]) {
+			var timeParts = matches[1].split(':');
+			var date = new Date();
+			date.setHours(timeParts[0]);
+			date.setMinutes(timeParts[1]);
+			var minutesString = date.getMinutes() < 10?
+			'0' + date.getMinutes() : date.getMinutes();
+			time.innerHTML = date.getHours() + ':' + minutesString;
+		}
+	}
 };
 
 // -- Textual ------------------------------------------------------------------
 
 // Defined in: "Textual.app -> Contents -> Resources -> JavaScript -> API -> core.js"
 
-Textual.newMessagePostedToView = function (lineNum) {
-    Sulaco.handleBufferPlayback(lineNum);
-    Sulaco.coalesceMessages(lineNum);
-    Sulaco.setDescriptiveClassNames(lineNum);
+Textual.messageAddedToView = function (lineNum, fromBuffer) {
+    Sulaco.handleBufferPlayback(lineNum, fromBuffer);
+    Sulaco.coalesceMessages(lineNum, fromBuffer);
+    Sulaco.setDescriptiveClassNames(lineNum, fromBuffer);
+	Sulaco.fixTimeStampFormatting(lineNum, fromBuffer);
 };
 
-Textual.viewBodyDidLoad = function () {
+Textual.viewFinishedLoading = function () {
   Textual.fadeOutLoadingScreen(1.00, 0.95);
 };
 

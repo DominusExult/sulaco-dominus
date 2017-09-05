@@ -17,6 +17,12 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+    width: 100%;
+    z-index: 100;
+    max-height: 99.99%;
+	opacity: 0; /* Set by JavaScript */
+	-webkit-transform: translateZ(0);
+	  transform: translateZ(0);
 }
 
 body[type*=server] #body_home {
@@ -32,16 +38,23 @@ body[type*=server] #body_home {
 .message {
     max-width: 90%;
     width: 100%;
+	font-weight: 700;
 }
 
 .sender {
-    background: #3c3c3c;
-    font-weight: 600;
-    overflow: hidden;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-weight: 700;
     width: 10em;
+	border-right: 1px solid rgb(64, 64, 64);
+	padding-right:7px;
+	background: #3c3c3c;
+    text-align: right;
+    overflow: hidden;
+    display:inline-block;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-overflow: ellipsis;
 	cursor: pointer;
 }
 
@@ -173,19 +186,19 @@ body[type*=server] .line:hover .time {
 
 /* Links */
 a {
-  color: #00e;
-  text-decoration: none;
-  border-bottom: dotted 1px #00e;
+    color: #ccc;
+    border-color: #ccc;
+    text-decoration: none;
+    border-bottom: dotted 1px;
 }
 
 a:hover {
-  color: #8cb3ff;
-  border: none;
-  border-bottom: solid 1px #8cb3ff;
+    color: #0;
+    border-color: #64a5ff;
 }
 
 /* Remember Line */
-#mark {
+/*#mark {
 	position: relative;
 	border-bottom: 1px dashed;
 	z-index: 295;
@@ -193,27 +206,74 @@ a:hover {
 	border-color: #c33;
 	-webkit-transition: 0.2s linear;
 	font-size:1px;
-}
-
-/* message playback */
-.historic 
-{
-    opacity: 0.8 !important;
-}
-
-/* ONLY works on Textual 6 launch thus commenting it for now*/
-/*#historic_messages {
-	transition: opacity 0.8s ease-in;
-	opacity: 0;
-	height: 0;
-	margin: 0;
-	padding: 0;
-}
-
-#historic_messages.loaded {
-	opacity: 0.8 !important;
-	height: auto;
 }*/
+
+/* Message buffer loading animation */
+
+.message_buffer_loading_indicator {
+	text-align: center;
+	height: 42px;
+}
+
+.message_buffer_loading_indicator span {
+	font-family: Optima !important;
+	font-size: 35px;
+	font-weight: 600;
+	letter-spacing: 5px;
+	line-height: 43px;
+	color: #b6b6b6;
+	-webkit-animation: ellipsis-period 1.5s infinite;
+	animation: ellipsis-period 1.5s infinite;
+}
+
+.message_buffer_loading_indicator span:nth-child(1) {
+	-webkit-animation-delay: 0.0s;
+	animation-delay: 0.0s;
+}
+
+.message_buffer_loading_indicator span:nth-child(2) {
+	-webkit-animation-delay: 0.1s;
+	animation-delay: 0.1s;
+}
+
+.message_buffer_loading_indicator span:nth-child(3) {
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+
+@keyframes ellipsis-period {
+	0% { opacity: 0.2; }
+	20% { opacity: 0.3; }
+	100% { opacity: 0.2; }
+}
+
+/* Message buffer session indicator */
+
+.message_buffer_session_indicator {
+	display: flex;
+	display: -webkit-flex;
+	padding: 0.5em 0;
+}
+
+.message_buffer_session_indicator > hr {
+	background: #dbdbdb;
+	border: 0;
+	height: 1px;
+	margin-top: 0.6em;
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.message_buffer_session_indicator > span {
+	font-style: oblique;
+	margin: 0 1em;
+	color: #a6a6a6;
+}
+
+.message_buffer_session_indicator + div[id=mark] {
+	display: none;
+}
+
 
 /* Scrolling */
 
@@ -252,7 +312,7 @@ body div#loading_screen {
     width: 300px;
     height: 21px;
     font-size: 18px;
-    background: #181818;
+    background: #303030;
     border: 1px solid #333;
     border-radius: 5px;
     padding: 5px;
